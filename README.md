@@ -11,3 +11,6 @@ npm install
 # v0.0.2
 Conección a Mongoose agregada, además de moverse las rutas a /config/routes/usuario.
 ---
+# v0.0.3
+Put y post funcionando con MongoDB.
+---
