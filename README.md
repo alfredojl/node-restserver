@@ -17,3 +17,7 @@ Conección a Mongoose agregada, además de moverse las rutas a /config/routes/us
 Put y post funcionando con MongoDB.  
 
 ---
+# v0.0.4  
+Conexión con MongoDB Atlas. Configuraciones extras.
+
+---
