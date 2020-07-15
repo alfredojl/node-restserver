@@ -11,7 +11,7 @@ let rolesValidos = {
 let usuarioSchema = new Schema({
     name: {
         type: String,
-        required: [true, 'EL nombre es necesario.']
+        required: [true, 'El nombre es necesario.']
     },
     email: {
         type: String,
