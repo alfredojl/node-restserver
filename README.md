@@ -21,3 +21,9 @@ Put y post funcionando con MongoDB.
 Conexión con MongoDB Atlas. Configuraciones extras.
 
 ---
+# v0.0.5  
+Login con email y password agregada.  
+Creación de TOKEN agregada al momento del login.
+Verificación del token en el get/usuario.
+
+---
