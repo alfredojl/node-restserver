@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const uniqueValidator = require('mongoose-unique-validator');
 
+
 let Schema = mongoose.Schema;
 
 let rolesValidos = {
@@ -39,6 +40,14 @@ let usuarioSchema = new Schema({
         default: false
     }
 });
+
+usuarioSchema.methods.toJSON = function() {
+    let user = this;
+    let userObject = user.toObject();
+    delete userObject.passwd;
+
+    return userObject;
+}
 
 usuarioSchema.plugin(uniqueValidator, { message: '{PATH} ya existe, debe de ser único.' });
 
