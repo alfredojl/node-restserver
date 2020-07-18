@@ -15,7 +15,7 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'dev';
 ==Expiración de token===
 ======================*/
 // 60 segundos * 60 minutos etc.
-process.env.TOKEN_EXP = 60 * 60 * 24 * 30;
+process.env.TOKEN_EXP = '720h';
 
 /*======================
 =====SEED del token=====

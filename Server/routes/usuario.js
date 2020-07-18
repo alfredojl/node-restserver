@@ -4,12 +4,18 @@ const Usuario = require('../modelos/usuario');
 const bcrypt = require('bcrypt');
 const _ = require('underscore');
 
-const { verToken } = require('../middlewares/autenticacion');
+const { verToken, verRole } = require('../middlewares/autenticacion');
 
 
 const app = express();
 
 app.get('/usuario', verToken, (req, res) => {
+
+    return res.json({
+        name: req.usuario.name,
+        email: req.usuario.email,
+        id: req.usuario._id
+    })
 
     let desde = req.query.desde || 0;
     desde = Number(desde);
@@ -43,7 +49,7 @@ app.get('/usuario', verToken, (req, res) => {
 
 });
 
-app.post('/usuario', function(req, res) {
+app.post('/usuario', [verToken, verRole], function(req, res) {
 
     let body = req.body;
 
@@ -70,10 +76,10 @@ app.post('/usuario', function(req, res) {
     });
 });
 
-app.put('/usuario/:id', function(req, res) {
+app.put('/usuario/:id', [verToken, verRole], function(req, res) {
 
     let id = req.params.id;
-    let body = _.pick(req.body, ['name', 'email', 'img', 'role', 'status']);
+    let body = _.pick(req.body, ['name', 'email', 'img', 'role']);
 
     Usuario.findByIdAndUpdate(id, body, { new: true }, (err, usuarioDB) => {
 
@@ -93,11 +99,11 @@ app.put('/usuario/:id', function(req, res) {
 
 });
 
-app.delete('/usuario/:id', function(req, res) {
+app.delete('/usuario/:id', [verToken, verRole], function(req, res) {
 
     let id = req.params.id;
 
-    Usuario.findByIdAndUpdate(id, { "status": false }, { new: true }, (err, borrado) => {
+    Usuario.findByIdAndUpdate(id, { "status": false }, (err, borrado) => {
 
         if (err) {
             return res.status(400).json({
@@ -107,7 +113,7 @@ app.delete('/usuario/:id', function(req, res) {
         }
 
         if (!borrado || borrado.status === false) {
-            res.json({
+            return res.json({
                 ok: false,
                 err: {
                     message: "Usuario no encontrado."
