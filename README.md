@@ -1,5 +1,12 @@
 # Primer HTTP server
 ---
+# v0.0.6
+Aplicación desplegada en Heroku.  Login funcionando.
+```GET /usuario``` funcionando con token.  
+Se requiere de token para poder registrar un usuario o actualizarlo,
+además de eliminarlo.
+
+---
 # v0.0.5  
 Login con email y password agregada.  
 Creación de TOKEN agregada al momento del login.
