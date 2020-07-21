@@ -1,5 +1,11 @@
 # Primer HTTP server
 ---
+$ v0.0.7
+Google SignIn API agregada.  Requiere del token.  Si existe usuario, 
+pide que inicie sesión con cuenta normal, de lo contrario, crea un 
+usuario con los datos proporcionados por google.
+
+---
 # v0.0.6
 Aplicación desplegada en Heroku.  Login funcionando.
 ```GET /usuario``` funcionando con token.  
